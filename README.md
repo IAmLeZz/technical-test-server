@@ -18,7 +18,15 @@ npm i
 npm run dev
 ```
 
-Hay algunos componentes que requieren de Node.js para funcionar, así que ahora tenemos que movernos al backend
+Crearemos un archivo llamado ```.env.local``` en el directorio raíz del proyecto y adentro introduciremos lo siguiente
+
+```.env
+NEXT_PUBLIC_NODE_SERVER_URL_API=http://localhost:4000/api
+```
+
+Esta sería nuestra URL a la API del proyecto backend. *Si el puerto no es 4000, entonces tienes que cambiarlo por el correcto* </br>
+
+Hay algunos componentes del frontend que requieren de Node.js para funcionar, así que ahora tenemos que movernos al backend
 
 ## Iniciar Node.js (backend)
 
@@ -32,7 +40,7 @@ npm i
 
 Asumiendo que ya tenemos un gestor de bases de datos MySQL en nuestro sistema con un servidor activo, ahora tenemos que buscar los datos del servidor de base de datos para completar las variables de entorno.</br>
 
-** Ejemplo de un servidor tipo MariaDB
+* Ejemplo de un servidor tipo MariaDB
 
 ``` .env
 Database server
@@ -45,7 +53,7 @@ User: root@localhost
 Server charset: UTF-8 Unicode (utf8mb4)
 ```
 
-Tenemos que abrir el archivo ```.env```, donde veremos lo siguientes campos a rellenar con los datos de nuestro servidor de base de datos.
+Tenemos que crear un archivo ```.env```, donde pegaremos los siguientes campos a rellenar con los datos de nuestro servidor de base de datos.
 
 ``` .env
 DB_CONNECTION=
@@ -75,6 +83,7 @@ FRONTEND_URL=http://localhost:3000
 
 * ```DB_PASSWORD``` **puede** ser opcional y estar completamente vacío </br>
 * ```DB_DATABASE``` **debe** ser rellenado con *"spacex_api_data"* ya que es el nombre de la base de datos que vamos a crear a continuación
+* ```DB_PORT``` por defecto es **3306**. Si no lo es, puedes conseguir el puerto usando esta query en tu servidor  ```SHOW VARIABLES WHERE Variable_name = 'port';```
 * ```FRONTEND_URL``` dependerá de la URL de nuestro frontend, pero lo más probable es que sea <http://localhost:3000>
 
 ## Migraciones
