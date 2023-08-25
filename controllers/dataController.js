@@ -8,7 +8,7 @@ const checkRowCount = async (table) => {
 };
 const sendErrorResponse = (res, errorMessage) => {
     console.error(errorMessage);
-    res.send(errorMessage)
+    res.send(500).redirect(`${frontendUrl}/?response=success_store`);
 };
 
 exports.storeLaunchData = async (req, res) => {

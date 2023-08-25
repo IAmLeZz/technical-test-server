@@ -1,13 +1,13 @@
-const mysql = require('mysql2/promise');
-
-const connection = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
-});
+const { db } = require('@vercel/postgres')
 
 exports.query = async (sql, values = []) => {
-    const [rows] = await connection.query(sql, values);
-    return rows;
+    const client = await db.connect();
+    try {
+        const result = await client.query(sql, values);
+        return result.rows;
+    } catch (error) {
+        throw error;
+    } finally {
+        client.release();
+    }
 };
