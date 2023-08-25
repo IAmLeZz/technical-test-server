@@ -2,6 +2,7 @@ const https = require('https');
 const { query } = require('../utils/db');
 const frontendUrl = process.env.FRONTEND_URL;
 
+// Response handlers
 const checkRowCount = async (table) => {
     const result = await query(`SELECT COUNT(*) as count FROM ${table}`);
     return result[0].count;
