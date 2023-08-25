@@ -168,3 +168,11 @@ exports.getPayloadData = async (req, res) => {
         sendErrorResponse(res, error.message);
     }
 }
+
+exports.test = async (req, res) => {
+    try {
+        res.send('Hello World');
+    } catch (error) {
+        sendErrorResponse(res, error.message);
+    }
+}
